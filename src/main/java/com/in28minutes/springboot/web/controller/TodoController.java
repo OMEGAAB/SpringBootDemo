@@ -2,12 +2,9 @@ package com.in28minutes.springboot.web.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.validation.Valid;
-
 import com.in28minutes.springboot.web.model.Todo;
 import com.in28minutes.springboot.web.service.TodoService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 @Controller
 public class TodoController {
     @Autowired
@@ -56,8 +54,6 @@ public class TodoController {
 
     @RequestMapping("/delete-todos")
     public String deleteTodosPage(@RequestParam int id) {
-        if(id == 1)
-            throw new RuntimeException("Something went haywire ");
         service.deleteTodo(id);
         return "redirect:/list-todos";
     }
