@@ -21,9 +21,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
-// @SessionAttributes("name")
 public class TodoController {
     @Autowired
     TodoService service;
@@ -38,7 +36,6 @@ public class TodoController {
     @RequestMapping("/list-todos")
     public String showTodos(ModelMap model) {
         String name = getLoggedInUserName(model);
-        // String name = (String) model.get("name");
         model.put("todos", service.retrieveTodos(name));
         return "list-todos";
     }
